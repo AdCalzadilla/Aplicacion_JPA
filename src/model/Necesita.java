@@ -18,15 +18,15 @@ public class Necesita implements Serializable {
 
 	private String cantidad;
 
-	//bi-directional many-to-one association to Producto
-	@ManyToOne
-	@JoinColumn(name="PRODUCTOS_ID_Productos")
-	private Producto producto;
-
 	//bi-directional many-to-one association to Materiale
 	@ManyToOne
 	@JoinColumn(name="MATERIALES_ID_Materiales")
 	private Materiale materiale;
+
+	//bi-directional many-to-one association to Producto
+	@ManyToOne
+	@JoinColumn(name="PRODUCTOS_ID_Productos")
+	private Producto producto;
 
 	public Necesita() {
 	}
@@ -47,20 +47,20 @@ public class Necesita implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-	public Producto getProducto() {
-		return this.producto;
-	}
-
-	public void setProducto(Producto producto) {
-		this.producto = producto;
-	}
-
 	public Materiale getMateriale() {
 		return this.materiale;
 	}
 
 	public void setMateriale(Materiale materiale) {
 		this.materiale = materiale;
+	}
+
+	public Producto getProducto() {
+		return this.producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
 
 }

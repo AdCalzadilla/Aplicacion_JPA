@@ -9,12 +9,10 @@
 		<class>model.Materiale</class>
 		<class>model.Necesita</class>
 		<class>model.NecesitaPK</class>
-		<class>model.Pedido</class>
 		<class>model.Producto</class>
+		<class>model.Pedido</class>
 		<class>model.Vende</class>
 		<class>model.VendePK</class>
-		<class>model.VentaFísica</class>
-		<class>model.VentaOnline</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:8889/mydb"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>

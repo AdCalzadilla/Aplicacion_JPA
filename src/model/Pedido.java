@@ -19,14 +19,6 @@ public class Pedido implements Serializable {
 
 	private String precio;
 
-	//bi-directional one-to-one association to VentaFísica
-	@OneToOne(mappedBy="pedido")
-	private VentaFísica ventaFísica;
-
-	//bi-directional one-to-one association to VentaOnline
-	@OneToOne(mappedBy="pedido")
-	private VentaOnline ventaOnline;
-
 	//bi-directional many-to-one association to Vende
 	@OneToMany(mappedBy="pedido")
 	private List<Vende> vendes;
@@ -48,22 +40,6 @@ public class Pedido implements Serializable {
 
 	public void setPrecio(String precio) {
 		this.precio = precio;
-	}
-
-	public VentaFísica getVentaFísica() {
-		return this.ventaFísica;
-	}
-
-	public void setVentaFísica(VentaFísica ventaFísica) {
-		this.ventaFísica = ventaFísica;
-	}
-
-	public VentaOnline getVentaOnline() {
-		return this.ventaOnline;
-	}
-
-	public void setVentaOnline(VentaOnline ventaOnline) {
-		this.ventaOnline = ventaOnline;
 	}
 
 	public List<Vende> getVendes() {

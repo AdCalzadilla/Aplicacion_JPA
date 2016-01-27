@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
@@ -12,6 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+import es.ull.bbdd.query.QueryArtesano;
 
 public class ArtProdVent extends JPanel implements ActionListener{
 
@@ -32,21 +36,57 @@ public class ArtProdVent extends JPanel implements ActionListener{
 
         setBackground(background);
         setLayout(new BorderLayout());
-        setTitle(title);
+        setData(background);
         setButtons(background);
 	}
 	
-	private void setTitle(String title){
+	private void setData(Color background) {
 		
-		Font font = new Font("Tahoma", Font.BOLD, 30);
+		QueryArtesano consulta = new QueryArtesano();
+		
+		JPanel pText = new JPanel();
+		
+		pText.setBackground(background);
+		
+		Font font = new Font("Tahoma", Font.BOLD, 15);
         
-        JLabel myTitle = new JLabel(title);
-        myTitle.setFont(font);
-        myTitle.setBounds(60, 20, 600, 200);
-        add (myTitle, BorderLayout.NORTH);
+        JLabel myTitle1 = new JLabel("Artesanos:");
+        myTitle1.setFont(font);
+        pText.add(myTitle1);
+		
+		String datosArt = consulta.artesanoDatos();
+		
+		JTextField datos = new JTextField(datosArt);
+	    pText.add(datos);
+		
+        JLabel myTitle2 = new JLabel("Fabrica:");
+        myTitle2.setFont(font);
+        pText.add(myTitle2);
+		
+		datosArt = consulta.artesanoFabrica();
+		
+		datos = new JTextField(datosArt);
+	    pText.add(datos);
+	    
+        JLabel myTitle3 = new JLabel("Artesanos:");
+        myTitle3.setFont(font);
+        pText.add(myTitle3);
+		
+		datosArt = consulta.artesanoVenta();
+		
+		datos = new JTextField(datosArt);
+	    pText.add(datos);
+
+		add(pText, BorderLayout.CENTER);
+
+		
+		
+		consulta.close();
+		
+
 		
 	}
-	
+
 	private void setButtons(Color background) {
 		
 		JPanel bar1 = new JPanel();
