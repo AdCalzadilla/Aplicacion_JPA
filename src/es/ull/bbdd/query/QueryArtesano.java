@@ -107,6 +107,61 @@ public class QueryArtesano {
 		return datos;
 	}
 	
+	
+	public String artesanoProducto(){
+		
+		Query query = em.createQuery("SELECT p FROM Producto p");
+		query.setMaxResults(10);
+		Vector<model.Producto> list = (Vector<model.Producto>) query.getResultList();
+		
+		String datos = "";
+		
+		for (int i=0; i< list.size(); i++){
+			
+			/*System.out.print("\n\nID " + i + ":\n");
+			System.out.print("Horas: " + list.get(i).getHoras() + " ");
+			System.out.print("Coste: " + list.get(i).getCoste() + "€\n");
+			System.out.print("Tipo:" + list.get(i).getTipo() + "\n");
+			System.out.print("Nombre: " + list.get(i).getNombre()+ "\n\n"); */
+			
+			datos =  datos + "ID Producto:" + i + ":\n" +
+					"Horas: " + list.get(i).getHoras() + " \n" +
+					"Coste: " + list.get(i).getCoste() + "€\n" +
+					"Tipo:" + list.get(i).getTipo() + "\n" +
+					"Nombre: " + list.get(i).getNombre()+ "\n\n";
+		}
+		
+		System.out.println(datos);
+		
+		return datos;
+	}
+
+	public String artesanoMateriales(){
+	
+	Query query = em.createQuery("SELECT m FROM Materiale m");
+	query.setMaxResults(10);
+	Vector<model.Materiale> list = (Vector<model.Materiale>) query.getResultList();
+	
+	String datos = "";
+	
+	for (int i=0; i< list.size(); i++){
+		
+		/*
+		System.out.print(""Id Material " + i + ":\n");
+		System.out.print(""Coste: " + list.get(i).getCoste() + "€\n ");
+		System.out.print(""Nombre: " + list.get(i).getNombre() + "\n");
+		System.out.print(""Tipo:" + list.get(i).getTipo() + "\n\n"); */
+		
+		datos =  datos + "Id Material " + i + ":\n" +
+				"Coste: " + list.get(i).getCoste() + "€\n " +
+				"Nombre: " + list.get(i).getNombre() + "\n" +
+				"Tipo:" + list.get(i).getTipo() + "\n\n";
+	}
+	
+	System.out.println(datos);
+	
+	return datos;
+	}
 	public void close(){
 		em.close();
 		emf.close();
